@@ -31,6 +31,7 @@ public class FileController {
 		return VIEW_NAME;
 	}
 	
+	
 	//http://localhost:8080/ehr/file/uploadfileview.do
 	@RequestMapping(value="file/do_save.do")
 	public String do_save(MultipartHttpServletRequest mReg,Model model) {
@@ -38,7 +39,11 @@ public class FileController {
 		LOG.debug("=@Controller do_save=");
 		LOG.debug("===============================");
 		String workDiv =  mReg.getParameter("work_div");
+		LOG.debug("===============================");
+		LOG.debug("=@Controller workDiv="+workDiv);
+		LOG.debug("===============================");
 		if(null == workDiv || "".equals(workDiv)) {
+			LOG.debug("=@Controller workDiv="+workDiv);
 			throw new IllegalArgumentException("작업 구분은 반듯이 입력 해야 합니다.");
 		}
 		LOG.debug("=@Controller workDiv="+workDiv);

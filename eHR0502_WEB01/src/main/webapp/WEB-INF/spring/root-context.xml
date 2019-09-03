@@ -11,6 +11,21 @@
 		<!-- 용량: 5*1024*1024 -->
 		<property name="maxUploadSize"  value="52428800"/>
 		<property name="maxInMemorySize" value="52428800"/>
-		
-	</bean>	
+	</bean>
+	
+	<!-- 예외 처리 설정 -->
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	   <property name="exceptionMappings">
+	       <props>
+	           <prop key="java.lang.ArithmeticException">
+	               common/arithmeticError
+	           </prop>
+               <prop key="java.lang.NullPointerException">
+                   common/nullPointerError
+               </prop>
+               <prop key="java.lang.IllegalArgumentException">common/nullPointerError</prop>                 	           
+	       </props>
+	   </property>
+	   <property name="defaultErrorView" value="common/error"/>
+	</bean>
 </beans>
