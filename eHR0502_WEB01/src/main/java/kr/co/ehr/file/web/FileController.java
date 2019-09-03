@@ -38,6 +38,9 @@ public class FileController {
 		LOG.debug("=@Controller do_save=");
 		LOG.debug("===============================");
 		String workDiv =  mReg.getParameter("work_div");
+		if(null == workDiv || "".equals(workDiv)) {
+			throw new IllegalArgumentException("작업 구분은 반듯이 입력 해야 합니다.");
+		}
 		LOG.debug("=@Controller workDiv="+workDiv);
 		Iterator<String> files = mReg.getFileNames();
 		
